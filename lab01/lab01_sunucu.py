@@ -42,7 +42,6 @@ class connThread(threading.Thread):
                 self.conn.send("TOC".encode())  
             elif data_str == "STA":                 
                 n = random.randint(1, 99) 
-                self.conn.send(str(n).encode()) 
                 self.conn.send("RDY".encode()) 
                 start = 1
             elif (data_str.startswith("TRY")):
