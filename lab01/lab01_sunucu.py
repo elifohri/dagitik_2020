@@ -6,6 +6,19 @@ import socket
 import threading
 import random
 
+def number_guess(n,guess):
+    try:
+        guess = int(guess)
+    except ValueError:
+        print("hata")
+    else:                        
+        if (guess < n):
+            return("LTH")
+        elif (guess > n):
+            return("GTH")
+        else :
+            return("WIN")  
+
 class connThread(threading.Thread):
     def __init__(self, threadID, conn, c_addr):
         threading.Thread.__init__(self)
@@ -17,36 +30,28 @@ class connThread(threading.Thread):
         conn.send("Sayi bulmaca oyununa hosgeldiniz!".encode()) 
        
         while True:
+            start = 0
             data = self.conn.recv(1024)
-            data_str = data.decode().strip().split()
-            if data_str[0] == "QUI":
+            data_str = data.decode().strip()
+            if data_str == "QUI":  
                 print("BYE")
                 break
-            elif data_str[0] == "TRY":
+            elif data_str == "TRY": 
                 self.conn.send("GRR".encode())             
-                    
-            elif data_str[0] == "STA":                    
-                n = random.randint(1, 99)                    
+            elif data_str == "TIC":
+                self.conn.send("TOC".encode())  
+            elif data_str == "STA":                 
+                n = random.randint(1, 99) 
+                self.conn.send(str(n).encode()) 
                 self.conn.send("RDY".encode()) 
-                data2 = self.conn.recv(1024)
-                data_str2 = data2.decode().strip().split()
-                while data_str2[0] == "TRY":
-                    try:
-                        guess = int(data_str2[1])
-                    except ValueError:
-                        self.conn.send("PRR".encode()) 
-                    else:                        
-                        if (guess < n):
-                            self.conn.send("LTH".encode()) 
-                            data2 = self.conn.recv(1024)
-                            data_str2 = data2.decode().strip().split()
-                        elif (guess > n):
-                            self.conn.send("GTH".encode()) 
-                            data2 = self.conn.recv(1024)
-                            data_str2 = data2.decode().strip().split()
-                        else :
-                            self.conn.send("WIN".encode()) 
-                            break                        
+                start = 1
+            elif (data_str.startswith("TRY")):
+                while (start == 1):
+                    data_splitted = data_str.split(" ")
+                    res = number_guess(n,data_splitted[1])
+                    self.conn.send(str(res).encode()) 
+                    if (res == "WIN") : 
+                        break
         self.conn.close()     
 
 s = socket.socket()
