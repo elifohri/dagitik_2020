@@ -1,0 +1,6 @@
+Hocam merhaba, ben test prosedürü ve kendi kodum hakkında bir kaç bilgilendirme yapmak istiyorum:
+Benim koduma göre, bir kullanıcı sunucuya kaydolup giriş yaptıktan sonra sunucudan çıkmadan tekrar 
+başka bir kullanıcı olarak kayıt ya da giriş yapamıyor. Ayrıca programı çalıştırıp çeşitli kullanıcı
+kayıtları yaptıktan sonra programı kapatıp tekrar çalıştırdığınızda eski kayıtlar silinmiş oluyor. Bu
+nedenle test prosedürlerini ayrı ayrı çalıştırdığınızda daha çok hata alabilirsiniz. 
+ 
