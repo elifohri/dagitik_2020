@@ -1,0 +1,12 @@
+GLR
+LGI torvalds 1972
+REG torvalds 1974
+GLR
+GNL gentoo selam
+GCR gentoo
+GNL gentoo tekrar selam
+PRV tux beni niye banladın?
+GCR ubuntu
+GLU ubuntu
+GNL ubuntu hey
+KOU tux ubuntu

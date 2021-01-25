@@ -1,0 +1,10 @@
+REG tux herring
+REG tux 1994
+REG torvalds 1972
+LGI tux 1984
+LGI tux 1994
+SCR gentoo
+GCR gentoo
+KOU torvalds gentoo
+SCR ubuntu
+GCR ubuntu
