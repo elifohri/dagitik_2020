@@ -1,0 +1,9 @@
+REG kde 2020
+LGI kde 2020
+GLR
+GCR ubuntu
+GLU ubuntu
+SCR plasma
+GCR plasma
+GLR
+DEL plasma
